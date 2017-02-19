@@ -14,6 +14,9 @@ public class GameWindow extends JFrame {
     private final int WINDOW_POS_Y = 150;
     private final String WINDOW_TITLE = "Tic-tac-toe";
 
+    StartNewGameWindow startNewGameWindow;
+
+
     GameWindow(){
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setSize(WINDOW_WIDHT,WINDOW_HEIGHT);
@@ -26,7 +29,7 @@ public class GameWindow extends JFrame {
         btnNewGame.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // start New Game window and make it visible
+                startNewGameWindow.setVisible(true);
             }
         });
         btnExit.addActionListener(new ActionListener() {
@@ -35,11 +38,16 @@ public class GameWindow extends JFrame {
                 System.exit(EXIT_ON_CLOSE);
             }
         });
+        startNewGameWindow = new StartNewGameWindow(this);
+
         JPanel panelForBottoms = new JPanel();
         panelForBottoms.setLayout(new GridLayout(1,2));
         panelForBottoms.add(btnNewGame);
         panelForBottoms.add(btnExit);
         add(panelForBottoms, BorderLayout.SOUTH);
+
+
+
 
 
 
