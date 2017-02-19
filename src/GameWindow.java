@@ -1,4 +1,7 @@
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * Created by Vadim on 19.02.2017.
@@ -12,10 +15,35 @@ public class GameWindow extends JFrame {
     private final String WINDOW_TITLE = "Tic-tac-toe";
 
     GameWindow(){
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setSize(WINDOW_WIDHT,WINDOW_HEIGHT);
         setTitle(WINDOW_TITLE);
         setLocation(WINDOW_POS_X,WINDOW_POS_Y);
         setVisible(true);
+        setResizable(false);
+        JButton btnNewGame = new JButton("New Game");
+        JButton btnExit = new JButton("Exit");
+        btnNewGame.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // start New Game window and make it visible
+            }
+        });
+        btnExit.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(EXIT_ON_CLOSE);
+            }
+        });
+        JPanel panelForBottoms = new JPanel();
+        panelForBottoms.setLayout(new GridLayout(1,2));
+        panelForBottoms.add(btnNewGame);
+        panelForBottoms.add(btnExit);
+        add(panelForBottoms, BorderLayout.SOUTH);
+
+
+
+
     }
 
 }
